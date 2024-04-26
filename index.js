@@ -39,4 +39,17 @@ app.get("/files/:filename", (req, res) => {
     res.render("show", { filename: req.params.filename, filedata: filedata });
   });
 });
+app.get("/edit/:filename", (req, res) => {
+  res.render("edit", { filename: req.params.filename });
+});
+app.post("/edit", (req, res) => {
+  fs.rename(
+    `./files/${req.body.previous}`,
+    `./files/${req.body.new}`,
+    (err) => {
+      res.redirect("/");
+    }
+  );
+  console.log(req.body);
+});
 app.listen(3000);
