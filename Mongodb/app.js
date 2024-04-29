@@ -66,6 +66,10 @@ app.get("/read", async (req, res) => {
   let readdata = await usermodal.find();
   res.render("read", { user: readdata });
 });
+app.get("/edit/:userid", async (req, res) => {
+  let editUser = await usermodal.findOne({ _id: req.params.userid });
+  res.render("edit", { editUser });
+});
 app.post("/create", async (req, res) => {
   let { name, email, image } = req.body;
   let user = await usermodal.create({
@@ -74,14 +78,22 @@ app.post("/create", async (req, res) => {
     image,
   });
   res.redirect("/read");
-  
+});
+app.post("/update/:userid", async (req, res) => {
+  let { image, name, email } = req.body;
+  let updateUser = await usermodal.findOneAndUpdate(
+    { _id: req.params.userid },
+    { name, email, image },
+    { new: true }
+  );
+  res.redirect("/read");
 });
 app.get("/deleteUser/:id", async (req, res) => {
-    let deleteuser = await usermodal.findOneAndDelete({_id: req.params.id})
-    // res.send("hey",req.params.id)
-    res.redirect("/read")
-    
-//    console.log(req.param.body)
+  let deleteuser = await usermodal.findOneAndDelete({ _id: req.params.id });
+  // res.send("hey",req.params.id)
+  res.redirect("/read");
+
+  //    console.log(req.param.body)
 });
 
 app.listen(3000);
