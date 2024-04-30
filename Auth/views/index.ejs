@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="w-full h-screen bg-zinc-900 flex justify-center items-center">
+      <form
+        method="post"
+        action="/create"
+        class="h-4/5 w-1/4 rounded-md bg-pink-800 flex flex-col justify-center items-center text-white"
+      >
+        <h1 class="mb-5 text-2xl">Create Your Account</h1>
+        <input
+          class="w-10/12 h-10 px-5 rounded-2xl bg-zinc-700 border-white-200 border-2"
+          type="text"
+          name="username"
+          placeholder="Enter your username"
+        />
+        <input
+          class="w-10/12 h-10 px-5 rounded-2xl bg-zinc-700 border-white-200 border-2 my-10"
+          type="text"
+          name="email"
+          placeholder="Enter your email"
+        />
+        <input
+          class="w-10/12 h-10 px-5 rounded-2xl bg-zinc-700 border-white-200 border-2"
+          type="text"
+          name="password"
+          placeholder="Enter your Password"
+        />
+        <input
+          class="w-10/12 h-10 px-5 rounded-2xl bg-zinc-700 border-white-200 border-2 my-10"
+          type="text"
+          name="phone"
+          placeholder="Enter your PhoneNo"
+        />
+        <input
+          class="h-10 px-5 rounded-md bg-pink-1500 border-white-200 border-2 my-5"
+          type="submit"
+        />
+      </form>
+    </div>
+  </body>
+</html>

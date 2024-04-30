@@ -1,0 +1,9 @@
+create user account
+
+setup mongoose
+create Schema 
+create Modal 
+userCreate  -> Password Hash
+jwt token -> Cookie
+
+login -> token recived -> decrypt -> email recived
