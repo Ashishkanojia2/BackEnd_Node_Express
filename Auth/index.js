@@ -54,12 +54,20 @@ app.get("/login", (req, res) => {
   res.render("login");
 });
 
-app.get("/login", async (req, res) => {
+app.post("/login", async (req, res) => {
   //   res.render("login");
   let user = await userModal.findOne({ email: req.body.email });
   console.log("user ", user);
   if (!user) return res.send("something went wrong");
-  console.log("user Password ->", user.password);
+  console.log("user Password ->", user.password, req.body.password);
+  bcrypt.compare(req.body.password, user.password, (err, result) => {
+    console.log(result);
+    if (result == true) {
+      let token = jwt.sign({ email: user.email }, "secretkey");
+      res.cookie("Newtoken", token);
+      res.send("yes you are log in");
+    } else res.send("Something went Wrong");
+  });
 });
 
 app.listen(3000);
